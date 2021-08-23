@@ -1,0 +1,13 @@
+/**
+ * 子模块会继承父模块的依赖，
+ */
+/**
+ * 可以通过dependencies添加该模块需要依赖的模块
+ */
+
+dependencies {
+    implementation project(":userService")
+}
+
+
+

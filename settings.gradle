@@ -1,0 +1,9 @@
+/**
+ * 控制当前项目有哪些子模块
+ */
+
+rootProject.name = 'grovvy'
+include 'userController'
+include 'userService'
+include 'userDao'
+

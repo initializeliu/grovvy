@@ -1,0 +1,51 @@
+/**
+ * 如果子模块想使用父模块的内容，需要将标签放在allprojects
+ *
+ */
+allprojects{
+
+    group 'com.initlialize'
+    version '1.0-SNAPSHOT'
+
+    /**
+     * 如果想要使webapp生效，一定要添加，自动表示为web项目
+     */
+    apply plugin: 'war'
+
+    /**
+     * 指定所使用的仓库，mavenCentral()表示使用中央仓库，此刻项目中所需要的jar
+     *  mavenLocal()
+     *  mavenCentral()
+     *  会从本地仓库加载jar包，没有再从中央仓库加载jar包
+     *  mavenCentral()
+     *  会直接从中央仓库加载jar包
+     */
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    /**
+     * gradle工程所有的jar包的坐标都在dependencies属性的内放置
+     * 每一个jar包的坐标都有三个基本元素组成
+     * group,name,version
+     * testCompile表示该jar包在测试的时候起作用，该属性为jar包的作用域
+     * 我们在gradle
+     */
+    dependencies {
+        compileOnly group: 'javax.servlet.jsp', name: 'javax.servlet.jsp-api', version: '2.3.1'
+        compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
+        implementation group: 'org.springframework', name: 'spring-webmvc', version: '5.3.6'
+        implementation group: 'org.springframework', name: 'spring-web', version: '5.3.6'
+        implementation group: 'org.springframework', name: 'spring-context', version: '5.3.6'
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    }
+
+}
+
+
+
+test {
+    useJUnitPlatform()
+}
